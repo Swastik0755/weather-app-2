@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 import MainSection from './components/mainSection';
+// import 'dotenv/config'
 
+// require('dotenv').config();
+
+const process = require("process");
 const App = () => {
-  // /Syntax
-  // const [state, setState] = useState(0);
-
   const [weatherData, setWeatherData] = useState(null);
   const [location, setLocation] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const fetchData = async () => {
-
-    const apiKey = "8261912193420ebebf18e19c6483a022";
+    const apiKey = process.env.API_KEY;
+    // const apiKey = "298a14ef5da3d6df9a805cae904fc1e4";
 
     try {
       const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`);
